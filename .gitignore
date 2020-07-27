@@ -1,0 +1,9 @@
+# all media files
+media/
+
+# database
+*.sqlite3
+
+# pycache ignore
+*.pyc
+__pycache__/

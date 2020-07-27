@@ -1,0 +1,25 @@
+{% extends 'articles/base.html' %}
+
+{% block main %}
+<main>
+    <section class="articles">
+        <div class="container">
+            <div class="articles__row">
+                {% for article in articles %}
+                <div class="article-block {% cycle 'article-block--fisrt' '' '' 'article-block--image-bg article-block--fisrt' 'article-block--image-bg' %}">
+                    <div class="article-block__image-wrapper">
+                        <img src="{{ MEDIA_URL }}{{ article.cover_image }}">
+                    </div>
+                    <div class="article-block__content-wrapper">
+                        <small class="article-block__tag">{{ article.category }}</small>
+                        <h2 class="article-block__title">{{ article.title }}</h2>
+                        <small class="article-block__time">{{ article.publication_date }}</small>
+                    </div>
+                    <a class="article-block__link" href="/articles/{{ article.id }}"></a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock main %}

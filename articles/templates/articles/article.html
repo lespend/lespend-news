@@ -1,0 +1,10 @@
+{% extends 'articles/base.html' %}
+
+{% block main %}
+<div class="container">
+<section class="article-detail">
+    <h2 class="article-detail__title">{{ article.title }}</h2>
+    {{ article.text|safe }}
+</section>
+</div>
+{% endblock main %}

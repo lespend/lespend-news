@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="shortcut icon" href="image/fav-icon.jpg">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Noto+Sans:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="{% static 'articles/style.css' %}">
+</head>
+<body>
+    {% block header %}
+    <header class="page-header">
+        <div class="container">
+            <div class="page-header__wrapper">
+                <a class="logotype page-header__logotype" href="{% url 'home' %}">lespend</a>
+                <nav class="navigation page-header__navigation">
+                    <ul class="navigation__list">
+                        <li class="navigation__item">
+                            <a class="navigation__link" href="{% url 'home' %}">Новости</a>
+                        </li>
+                        <li class="navigation__item">
+                            <a class="navigation__link" href="">Обучение</a>
+                        </li>
+                        <li class="navigation__item">
+                            <a class="navigation__link" href="">О нас</a>
+                        </li>
+                    </ul>
+                    <button class="page-header__menu-close-button">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </nav>
+                <div class="page-header__button-wrapper">
+                    <button class="page-header__search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="page-header__menu-button">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="page-header__block-info block-info">
+                {% block block-info %}
+                <p class="block-info__text">COVID-19. Заразились: {{ covid_info.0 }}. В России: {{ covid_info.1 }}</p>
+                {% endblock block-info %}
+            </div>
+
+            <div class="search-popup">
+                <form class="search-popup__form" action="{% url 'search-results' %}" method="get">
+                    <button class="search-popup__close" type="button">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <input name="q" class="search-popup__field" type="text" placeholder="Поиск">
+                    <button class="search-popup__submit" type="submit">Найти</button>
+                </form>
+            </div> 
+        </div>
+    </header>
+    {% endblock header %}
+
+    {% block main %}
+    {% endblock main %}
+
+    {% block footer %}
+    <footer class="page-footer container">
+        <ul class="page-footer__social-navigation">
+            <li>
+                <a class="page-footer__social-link" href="">
+                    <i class="fab fa-telegram-plane"></i>
+                </a>
+            </li>
+        </ul>
+        <a class="page-footer__email" href="">lespend@gmail.com</a>
+        <p class="page-footer__copyright">© 2020 Lespend</p>
+    </footer>
+    {% endblock footer %}
+
+    <script src="https://kit.fontawesome.com/c6d5b203d5.js" crossorigin="anonymous"></script>
+    <script src="{% static 'articles/script.js' %}"></script>
+</body>
+</html>
